@@ -13,7 +13,7 @@ This repository contains a project that dynamically generates daily workout rout
 [Steps](#steps)
  - [Step 1: Clone the repository](#step-1-clone-the-repository)
  - [Step 2: First Run Terraform](#step-2-first-run-terraform)
- - [Step 3: Update Secrets](step-3-update-secrets)
+ - [Step 3: Update Secrets](#step-3-update-secrets)
  - [Step 4: Deploy API](#step-4-deploy-api)
  - [Step 5: Build React.js App](#step-5-build-reactjs-app)
  - [Step 6: Second Run Terraform](#step-6-second-run-terraform)
