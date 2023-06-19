@@ -13,9 +13,10 @@ This repository contains a project that dynamically generates daily workout rout
 [Steps](#steps)
  - [Step 1: Clone the repository](#step-1-clone-the-repository)
  - [Step 2: First Run Terraform](#step-2-first-run-terraform)
- - [Step 3: Deploy API](#step-3-deploy-api)
- - [Step 4: Build React.js App](#step-4-build-reactjs-app)
- - [Step 5: Second Run Terraform](#step-5-second-run-terraform)
+ - [Step 3: Update Secrets](step-3-update-secrets)
+ - [Step 4: Deploy API](#step-4-deploy-api)
+ - [Step 5: Build React.js App](#step-5-build-reactjs-app)
+ - [Step 6: Second Run Terraform](#step-6-second-run-terraform)
 
 [Test the Application](#test-the-application)
 
@@ -81,7 +82,12 @@ Apply the Terraform configuration to create the AWS resources:
 terraform apply plan.out
 ```
 Please note that this step might take some time as it is provisioning resources in your AWS account.
-### Step 3: Deploy API
+### Step 3: Update Secrets
+1. Navigate to AWS Secrets
+2. Add needed secrets from OpenAI account
+   * *openai_key*
+   * *openai_org*
+### Step 4: Deploy API
 1. Login to the AWS Console
 2. Navigate to API Gateway
 3. Select *serverless_fitness_tips*
@@ -89,7 +95,7 @@ Please note that this step might take some time as it is provisioning resources 
 ![deploy_api.png](files%2Fdeploy_api.png)
 5. Take note of the **Invoke URL**
 ![invoke_url.jpg](files%2Finvoke_url.jpg)
-### Step 4: Build React.js App
+### Step 5: Build React.js App
 Navigate to the React app directory and install the necessary dependencies:
 ```bash
 cd files
@@ -104,7 +110,7 @@ Build the React app:
 cd workoutgenerator
 npm run build
 ```
-### Step 5: Second Run Terraform
+### Step 6: Second Run Terraform
 This is to upload the files to the S3 bucket
 ```bash
 cd ../..
