@@ -1,5 +1,6 @@
 # Serverless Daily Workout Generator
 This repository contains a project that dynamically generates daily workout routines with the help of OpenAI. The architecture is built using a React.js frontend, AWS API Gateway and Lambda functions for the application layer, another set of Lambda functions for the backend processing, and Amazon DynamoDB for the data layer. Infrastructure is provisioned and managed using Terraform.
+![architecture.png](files%2Farchitecture.png)
 ## Table of Contents
 [Introduction](#introduction)
 
