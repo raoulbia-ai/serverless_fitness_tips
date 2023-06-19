@@ -1,6 +1,9 @@
 #  Local .terraform directories
 **/.terraform/*
 
+# Local build directory
+terraform/files/workoutgenerator
+
 # Local terraform workout_generator
 backend.tf
 .terraform.lock.hcl

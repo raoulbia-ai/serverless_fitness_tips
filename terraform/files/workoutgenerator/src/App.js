@@ -3,15 +3,29 @@ import './App.css';
 
 function App() {
   const [workout, setWorkout] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
+  const [workoutDate, setWorkoutDate] = useState('');
 
   const getWorkout = async (level) => {
     try {
-      const response = await fetch(`https://j1ao83l0ba.execute-api.us-east-2.amazonaws.com/prod/workout?level=${level}`);
+      const response = await fetch(`https://fzxfntrgr8.execute-api.us-east-2.amazonaws.com/prod/workout?level=${level}`);
       const data = await response.json();
       setWorkout(data.workout);
+      setSelectedLevel(level.charAt(0).toUpperCase() + level.slice(1)); // Capitalize the first letter
+      setWorkoutDate(new Date().toLocaleDateString()); // Set today's date
     } catch (error) {
       console.error('Error fetching the workout:', error);
     }
+  };
+
+  const formatWorkoutSections = (workoutText) => {
+    const sections = workoutText.split('\n\n');
+    return sections.map((section, index) => (
+      <div key={index}>
+        <h3>{section.split('\n')[0]}</h3>
+        <p>{section.split('\n').slice(1).join('\n')}</p>
+      </div>
+    ));
   };
 
   return (
@@ -25,8 +39,8 @@ function App() {
         </div>
         {workout && (
           <div>
-            <h2>Workout Plan:</h2>
-            <p>{workout}</p>
+            <h2>The {selectedLevel} Workout for {workoutDate} is:</h2>
+            {formatWorkoutSections(workout)}
           </div>
         )}
       </header>

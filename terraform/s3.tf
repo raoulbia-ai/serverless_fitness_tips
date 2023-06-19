@@ -11,10 +11,16 @@ data "aws_iam_policy_document" "site" {
 }
 
 locals {
+  site_directory = "${path.module}/files/workoutgenerator/build/"
+
   mime_types = {
-    html = "text/html"
-    css  = "text/css"
-    js   = "application/javascript"
+    "html" = "text/html"
+    "css"  = "text/css"
+    "js"   = "application/javascript"
+    "png"  = "image/png"
+    "json" = "application/json"
+    "txt"  = "text/plain"
+    "map"  = "application/octet-stream"
   }
 }
 
@@ -49,10 +55,11 @@ module "site" {
 }
 
 resource "aws_s3_object" "website-object" {
+  for_each     = fileset(local.site_directory, "**/*")
+
   bucket       = module.site.s3_bucket_id
-  for_each     = fileset("./files/", "**/*")
   key          = each.value
-  source       = "./files/${each.value}"
-  etag         = filemd5("./files/${each.value}")
+  source       = "${local.site_directory}/${each.value}"
+  etag         = filemd5("${local.site_directory}/${each.value}")
   content_type = lookup(local.mime_types, split(".", each.value)[length(split(".", each.value)) - 1])
 }

@@ -36,6 +36,13 @@ def lambda_handler(event, context):
     # Get workout for today
     workout, status_code = get_workout_for_today(level, table)
 
+    # CORS headers
+    cors_headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "OPTIONS,GET"
+    }
+
     # If status_code is 201, trigger the backend Lambda to generate workouts
     if status_code == 201:
         lambda_client.invoke(
@@ -44,11 +51,13 @@ def lambda_handler(event, context):
         )
         return {
             'statusCode': 201,
+            'headers': cors_headers,
             'body': 'Workouts not generated. Triggering generation.'
         }
 
     # If status_code is 200, return the workout
     return {
         'statusCode': 200,
+        'headers': cors_headers,
         'body': json.dumps({'workout': workout})
     }
