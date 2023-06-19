@@ -1,20 +1,26 @@
 # Serverless Daily Workout Generator
 This repository contains a project that dynamically generates daily workout routines with the help of OpenAI. The architecture is built using a React.js frontend, AWS API Gateway and Lambda functions for the application layer, another set of Lambda functions for the backend processing, and Amazon DynamoDB for the data layer. Infrastructure is provisioned and managed using Terraform.
 ## Table of Contents
-- [Serverless Daily Workout Generator](#serverless-daily-workout-generator)
-  - [Introduction](#introduction)
-  - [What is being built](#what-is-being-built)
-  - [Prerequisites](#prerequisites)
-  - [Explaining the Happy Path](#explaining-the-happy-path)
-  - [Steps](#steps)
-    - [Step 1: Clone the repository](#step-1-clone-the-repository)
-    - [Step 2: First Run Terraform](#step-2-first-run-terraform)
-    - [Step 3: Deploy API](#step-3-deploy-api)
-    - [Step 4: Build React.js App](#step-4-build-reactjs-app)
-    - [Step 5: Second Run Terraform](#step-5-second-run-terraform)
-  - [Test the Application](#test-the-application)
-  - [Troubleshoot](#troubleshoot)
-  - [Conclusion](#conclusion)
+[Introduction](#introduction)
+
+[What is being built](#what-is-being-built)
+
+[Prerequisites](#prerequisites)
+
+[Explaining the Happy Path](#explaining-the-happy-path)
+
+[Steps](#steps)
+ - [Step 1: Clone the repository](#step-1-clone-the-repository)
+ - [Step 2: First Run Terraform](#step-2-first-run-terraform)
+ - [Step 3: Deploy API](#step-3-deploy-api)
+ - [Step 4: Build React.js App](#step-4-build-reactjs-app)
+ - [Step 5: Second Run Terraform](#step-5-second-run-terraform)
+
+[Test the Application](#test-the-application)
+
+[Troubleshoot](#troubleshoot)
+
+[Conclusion](#conclusion)
 ## Introduction
 This application aims to provide users with a daily workout routine. Users can access a React.js based front-end hosted in S3 and Cloudfront to interact with the application. The app then communicates with an AWS backend through API Gateway. Lambda functions are used to process and fetch the data. The workout plans are generated with the help of OpenAI and are stored and retrieved from a DynamoDB table.
 ## What is being built
