@@ -4,7 +4,7 @@ const WorkoutDisplay = () => {
     const [workout, setWorkout] = useState(null);
 
     const fetchWorkout = (level) => {
-        fetch(`https://j1ao83l0ba.execute-api.us-east-2.amazonaws.com/prod/workout?level=${level}`)
+        fetch(`https://<API_INVOKE_URL>/workout?level=${level}`)
             .then(response => response.json())
             .then(data => setWorkout(data.workout))
             .catch(error => console.error('Error fetching workout:', error));
